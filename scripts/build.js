@@ -1,11 +1,12 @@
+const { join, basename, relative } = require("path");
 const dedent = require("dedent");
 const globby = require("globby");
 const SVGO = require("svgo");
-const { cyan, dim, yellow } = require("kleur");
+const { dim, yellow, red, green } = require("kleur");
 const { default: svgr } = require("@svgr/core");
-const { join, basename, relative } = require("path");
 const { pascalCase } = require("change-case");
 const { readFile, writeFile } = require("fs-extra");
+const cheerio = require("cheerio");
 const puppeteer = require("puppeteer");
 
 const ROOT = join(__dirname, "..");
@@ -44,6 +45,7 @@ const svgrConfig = {
 	plugins: ["@svgr/plugin-jsx", "@svgr/plugin-prettier"]
 };
 
+let hasError = false;
 (async () => {
 	const iconsLibrary = await globby("icons/*.svg", {
 		absolute: true,
@@ -58,11 +60,36 @@ const svgrConfig = {
 			const iconName = `${pascalCase(basename(iconPath, ".svg"))}Icon`;
 			const outputFileName = join(destinationDir, `${iconName}.tsx`);
 
-			console.log(
-				`${yellow("-")} ${dim("Processing:")} ${iconName} ${dim(
-					"as"
-				)} ${cyan(relative(ROOT, outputFileName))}`
-			);
+			logForIcon(iconName, "success", "Processing");
+
+			try {
+				// Validate SVG before import
+				const $ = cheerio.load(optimizedSvg);
+				$("svg *").each((i, el) => {
+					const $el = $(el);
+
+					// Validate color attributes
+					["stroke", "fill"].forEach(attr => {
+						const color = $el.attr(attr);
+						const validColors = [
+							"currentColor",
+							"black",
+							"#000",
+							"#000000"
+						];
+						if (color && !validColors.includes(color)) {
+							throw new Error(
+								`${iconName}: Invalid ${attr} colour: ${$.html(
+									el
+								)}`
+							);
+						}
+					});
+				});
+			} catch (error) {
+				logForIcon(iconName, "error", "Validation", error.message);
+				hasError = true;
+			}
 
 			// Process files
 			const componentContents = await svgr(optimizedSvg, svgrConfig, {
@@ -105,6 +132,11 @@ const svgrConfig = {
 		"utf8"
 	);
 
+	if (hasError) {
+		// eslint-disable-next-line unicorn/no-process-exit
+		process.exit(1);
+	}
+
 	await generateIconsImage(library);
 })();
 
@@ -139,4 +171,18 @@ async function generateIconsImage(library) {
 	await page.screenshot({ path: "icons.png", fullPage: true });
 
 	await browser.close();
+}
+
+function logForIcon(iconName, level, state, message = "") {
+	const [fnc, symbol] = {
+		warning: [yellow, "⚠️"],
+		success: [green, "✅"],
+		error: [red, "❌"]
+	}[level];
+
+	console.log(
+		`${fnc(symbol)} ${dim(`${state}:`)} ${iconName}${
+			message.length > 0 ? fnc(` ${message}`) : ""
+		}`
+	);
 }
