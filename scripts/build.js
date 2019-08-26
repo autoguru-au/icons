@@ -30,7 +30,7 @@ const svgrConfig = {
 	replaceAttrValues: { "#000": "currentColor" },
 	expandProps: false,
 	dimensions: false,
-	template({ template }, opts, { componentName, jsx }) {
+	template({ template }, opts, { jsx }) {
 		const reactTemplate = template.smart({
 			plugins: ["react", "typescript"]
 		});
@@ -105,7 +105,10 @@ const svgrConfig = {
 		"utf8"
 	);
 
-	// Create screenshot
+	await generateIconsImage(library);
+})();
+
+async function generateIconsImage(library) {
 	const browser = await puppeteer.launch({
 		headless: true
 	});
@@ -136,4 +139,4 @@ const svgrConfig = {
 	await page.screenshot({ path: "icons.png", fullPage: true });
 
 	await browser.close();
-})();
+}
