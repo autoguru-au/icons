@@ -1,0 +1,4 @@
+dist/
+.rts*/
+lib/
+index.ts

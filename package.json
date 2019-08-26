@@ -1,0 +1,74 @@
+{
+  "name": "@autoguru/icons",
+  "version": "1.0.0",
+  "description": "Icons and illustrations that support product at AutoGuru",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/icons.esm.js",
+  "types": "./dist/index/index.d.ts",
+  "scripts": {
+    "prebuild": "yarn run clean",
+    "build": "yarn run generate && tsdx build -i index.ts",
+    "clean": "rimraf lib/*.tsx",
+    "format": "prettier --write \"**/*.+(js|jsx|ts|tsx)\"",
+    "generate": "node scripts/build"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint --edit --extends @autoguru/commitlint-config",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js}": [
+      "eslint --cache --quiet --fix",
+      "jest --bail --findRelatedTests",
+      "prettier --write",
+      "git add"
+    ],
+    "package.json": [
+      "npx sort-package-json",
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@autoguru/babel-preset": "^1.0.64",
+    "@autoguru/commitlint-config": "^1.0.53",
+    "@autoguru/eslint-plugin": "^1.0.62",
+    "@autoguru/tsconfig": "^1.0.63",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@commitlint/cli": "^8.1.0",
+    "@svgr/core": "^4.3.2",
+    "@svgr/plugin-jsx": "^4.3.2",
+    "@svgr/plugin-prettier": "^4.3.2",
+    "change-case": "^3.1.0",
+    "dedent": "^0.7.0",
+    "fs-extra": "^8.1.0",
+    "globby": "^10.0.1",
+    "husky": "^3.0.4",
+    "kleur": "^3.0.3",
+    "lint-staged": "^9.2.4",
+    "prettier": "^1.18.2",
+    "puppeteer": "^1.19.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "rimraf": "^3.0.0",
+    "svgo": "^1.3.0",
+    "tsdx": "^0.8.0",
+    "typescript": "~3.5.3"
+  },
+  "peerDependencies": {
+    "react": ">=16.8"
+  },
+  "volta": {
+    "node": "12.9.0",
+    "yarn": "1.17.3"
+  }
+}
