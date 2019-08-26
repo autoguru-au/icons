@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
-    <title>uber-box</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M4,2 L20,2 C21.1045695,2 22,2.8954305 22,4 L22,20 C22,21.1045695 21.1045695,22 20,22 L4,22 C2.8954305,22 2,21.1045695 2,20 L2,4 C2,2.8954305 2.8954305,2 4,2 Z M14.5953586,13.2832205 C14.5953586,15.1387348 13.3120974,16.4046008 11.6820704,16.4046008 C10.0173342,16.4046008 8.73407304,15.1734439 8.73407304,13.2832205 L8.73407304,6 L7,6 L7,13.3872666 C7,16.161881 8.94216505,18 11.4739783,18 C12.7051352,18 13.8150135,17.5144791 14.6126725,16.6994249 L14.6126725,17.791908 L16.3641407,17.791908 L16.3641407,6 L14.5953586,6 L14.5953586,13.2832205 Z" id="path-1"></path>
-    </defs>
-    <g id="uber-box" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use fill="#000000" xlink:href="#path-1"></use>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24"><defs><path id="a" d="M4 2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2zm10.595 11.283c0 1.856-1.283 3.122-2.913 3.122-1.665 0-2.948-1.232-2.948-3.122V6H7v7.387C7 16.162 8.942 18 11.474 18a4.358 4.358 0 003.139-1.3v1.092h1.751V6h-1.769v7.283z"/></defs><use fill-rule="evenodd" xlink:href="#a"/></svg>

@@ -165,7 +165,7 @@ async function generateIconsImage(library) {
 			</div>
 	`);
 	page.addStyleTag({
-		content: `@font-face{font-family:'AvertaStandard';font-style:normal;font-weight:500;font-display:swap;src:local('Averta Std Semibold'),local(AvertaStd-Semibold),url(https://cdn.autoguru.com.au/assets/fonts/avertastd-semibold-webfont.woff2) format("woff2"),url(https://cdn.autoguru.com.au/assets/fonts/avertastd-semibold-webfont.woff) format("woff")}:root{font:400 16px/22px AvertaStandard,system-ui,sans-serif}body{background-color:#eef0f2;padding:20px}.iconWrapper{display:grid;grid-template-columns:repeat(4,1fr);grid-gap:20px}.icon{flex-direction:column;box-sizing:border-box;display:flex;place-content:center;align-items:center;color:#34384c;font-weight:500}.icon span{margin-top:10px}`,
+		content: `@font-face{font-family:'AvertaStandard';font-style:normal;font-weight:500;font-display:swap;src:local('Averta Std Semibold'),local(AvertaStd-Semibold),url(https://cdn.autoguru.com.au/assets/fonts/avertastd-semibold-webfont.woff2) format("woff2"),url(https://cdn.autoguru.com.au/assets/fonts/avertastd-semibold-webfont.woff) format("woff")}:root{font:400 16px/22px AvertaStandard,system-ui,sans-serif}body{background-color:#fafbfc;padding:20px}.iconWrapper{display:grid;grid-template-columns:repeat(4,1fr);grid-gap:20px}.icon{flex-direction:column;box-sizing:border-box;display:flex;place-content:center;align-items:center;color:#34384c;font-weight:500}.icon span{margin-top:10px}`,
 	});
 
 	await page.screenshot({ path: 'icons.png', fullPage: true });

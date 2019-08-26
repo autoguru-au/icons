@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
-    <title>chevron-left-back</title>
-    <desc>Created with Sketch.</desc>
-    <g id="chevron-left-back" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="chevron-left" fill="#000000" points="7.82998439 12 16.41 3.41000001 15 2 5 12 15 22.0000001 16.41 20.5800157"></polygon>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M7.83 12l8.58-8.59L15 2 5 12l10 10 1.41-1.42z"/></svg>
