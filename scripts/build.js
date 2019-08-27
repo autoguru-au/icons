@@ -27,7 +27,7 @@ const svgo = new SVGO({
 });
 
 const svgrConfig = {
-	svgProps: { fill: 'currentColor' },
+	svgProps: { fill: 'currentColor', focusable: 'false' },
 	replaceAttrValues: { '#000': 'currentColor' },
 	expandProps: false,
 	dimensions: false,
