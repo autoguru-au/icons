@@ -13,7 +13,7 @@
     "prebuild": "yarn run clean",
     "build": "yarn run generate && tsdx build -i index.ts",
     "clean": "rimraf lib/*.tsx",
-    "format": "prettier --write \"**/*.+(js|jsx|ts|tsx)\"",
+    "format": "prettier --write \"**/*.+(js|jsx|ts|tsx|md)\"",
     "generate": "node scripts/build",
     "lint": "eslint \"scripts/**/*.{js,jsx,ts,tsx}\" --cache --quiet",
     "semantic-release": "semantic-release"
