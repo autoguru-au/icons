@@ -5,7 +5,7 @@ Please fill in this template
 
 Select one of these, and delete the others:
 
-Adding an icon: `this till be marked as a patch`
+Adding an icon: `this will be marked as a patch`
 
 -   [ ] Give the icon a meaningful name, preferably namespaced eg,
         car-windscreen rather than just windscreen.
