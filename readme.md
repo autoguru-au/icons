@@ -19,3 +19,10 @@ import { Icon } from '@autoguru/overdrive';
 ### Icons
 
 ![autoguru icons](icons.png)
+
+
+### Contributing
+
+> For now this is quite manual.
+
+Even though you we run `svgo` over the files before we generate the components, we want our source to be quite clean too. At this stage, please optimize this before you raise the pull request.  
