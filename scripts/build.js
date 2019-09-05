@@ -16,6 +16,10 @@ const destinationDir = join(ROOT, 'lib');
 const svgo = new SVGO({
 	multipass: true,
 	plugins: [
+		{ minifyStyles: true },
+		{ sortAttrs: true },
+		{ mergePaths: true },
+		{ convertColors: true },
 		{ removeViewBox: false },
 		{
 			inlineStyles: {
@@ -23,6 +27,11 @@ const svgo = new SVGO({
 			},
 		},
 		{ convertStyleToAttrs: true },
+		{
+			removeAttrs: {
+				attrs: ['baseProfile'],
+			},
+		},
 	],
 });
 
