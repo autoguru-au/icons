@@ -111,10 +111,9 @@ let hasError = false;
 			return {
 				iconName,
 				outputFileName,
-				importFrom: relative(ROOT, outputFileName).replace(
-					/\.tsx$/,
-					'',
-				),
+				importFrom: relative(ROOT, outputFileName)
+					.replace(/\.tsx$/, '')
+					.replace(/\\/, '/'),
 				optimizedSvg,
 			};
 		}),
