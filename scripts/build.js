@@ -48,7 +48,8 @@ const svgrConfig = {
 		return reactTemplate.ast`
 			import React, { ReactElement, SVGAttributes } from 'react';
 			${'\n'}
-			export const Icon:ReactElement<SVGAttributes<SVGElement>, 'svg'> = ${jsx};
+			const Icon: ReactElement<SVGAttributes<SVGElement>, 'svg'> = ${jsx};
+			export default Icon;
 		`;
 	},
 	plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
@@ -132,7 +133,7 @@ let hasError = false;
 				library
 					.map(
 						iconConfig =>
-							`export { Icon as ${iconConfig.iconName} } from './${iconConfig.importFrom}';`,
+							`export { default  as ${iconConfig.iconName} } from './${iconConfig.importFrom}';`,
 					)
 					.join('\n'),
 			)
