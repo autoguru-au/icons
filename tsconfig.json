@@ -5,8 +5,9 @@
 		"rootDir": "./",
 		"jsx": "react",
 		"outDir": "./dist",
-		"declaration": true,
-		"declarationDir": "./dist/"
+		"importHelpers": true,
+		"noEmitHelpers": true,
+		"incremental": false
 	},
 	"include": [
 		"./index.ts"

@@ -8,13 +8,13 @@
     "icons/"
   ],
   "sideEffects": false,
-  "main": "./dist/index.js",
-  "module": "./dist/icons.esm.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/ems/index.js",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "prebuild": "yarn run clean",
-    "build": "yarn run generate && tsc",
-    "clean": "rimraf lib/*.tsx",
+    "build": "yarn run generate && concurrently \"tsc -p tsconfig/cjs.json\" \"tsc -p tsconfig/esm.json\" && tsc --emitDeclarationOnly --declarationDir dist/types -d",
+    "clean": "rimraf lib/*.tsx dist/",
     "format": "prettier --write \"**/*.+(js|jsx|ts|tsx|md)\"",
     "generate": "node scripts/build",
     "lint": "eslint \"scripts/**/*.{js,jsx,ts,tsx}\" --cache --quiet",
@@ -38,7 +38,9 @@
       "git add"
     ]
   },
-  "dependencies": {},
+  "dependencies": {
+    "tslib": "^1.10.0"
+  },
   "devDependencies": {
     "@autoguru/babel-preset": "^1.0.69",
     "@autoguru/commitlint-config": "^1.0.54",
@@ -57,6 +59,7 @@
     "@svgr/plugin-prettier": "^4.3.2",
     "change-case": "^3.1.0",
     "cheerio": "^1.0.0-rc.3",
+    "concurrently": "^5.0.0",
     "dedent": "^0.7.0",
     "eslint": "^6.4.0",
     "fs-extra": "^8.1.0",
