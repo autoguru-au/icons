@@ -1,30 +1,20 @@
-name: ci
+name: CI
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
 
 jobs:
   build:
-
+    name: Build and Release
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.10.0]
-
     steps:
       - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: yarn install, build, and release
-        run: |
-          yarn install
-          yarn run build
-          yarn run semantic-release
+      - uses: rwjblue/setup-volta@v1
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn semantic-release
+        if: github.event_name == 'push' && github.repository == 'autoguru-au/icons' && github.ref == 'refs/heads/master'
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
