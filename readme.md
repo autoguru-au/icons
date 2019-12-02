@@ -16,10 +16,6 @@ import { Icon } from '@autoguru/overdrive';
 <Icon icon={AccountBoxIcon} size={16} />;
 ```
 
-## Icons
-
-![autoguru icons](icons.png)
-
 ### Contributing
 
 > For now this is quite manual.

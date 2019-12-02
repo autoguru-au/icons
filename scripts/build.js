@@ -7,7 +7,6 @@ const { default: svgr } = require('@svgr/core');
 const { pascalCase } = require('change-case');
 const { readFile, writeFile } = require('fs-extra');
 const cheerio = require('cheerio');
-const puppeteer = require('puppeteer');
 
 const ROOT = join(__dirname, '..');
 
@@ -145,42 +144,7 @@ let hasError = false;
 		// eslint-disable-next-line unicorn/no-process-exit
 		process.exit(1);
 	}
-
-	await generateIconsImage(library);
 })();
-
-async function generateIconsImage(library) {
-	const browser = await puppeteer.launch({
-		headless: true,
-	});
-	const page = await browser.newPage();
-	page.setViewport({
-		width: 800,
-		height: 800,
-		deviceScaleFactor: 2,
-		isLandscape: true,
-	});
-
-	page.setContent(`
-			<div class="iconWrapper">
-					${library
-						.map(
-							iconConfig => `<div class="icon">
-					<div class="svg">${iconConfig.optimizedSvg}</div>
-					<span>${iconConfig.iconName}</span>
-				</div>`,
-						)
-						.join('\n')}
-			</div>
-	`);
-	page.addStyleTag({
-		content: `@font-face{font-family:'AvertaStandard';font-style:normal;font-weight:500;font-display:swap;src:local('Averta Std Semibold'),local(AvertaStd-Semibold),url(https://cdn.autoguru.com.au/assets/fonts/avertastd-semibold-webfont.woff2) format("woff2"),url(https://cdn.autoguru.com.au/assets/fonts/avertastd-semibold-webfont.woff) format("woff")}:root{font:400 16px/22px AvertaStandard,system-ui,sans-serif}body{background-color:#fafbfc;padding:20px}.iconWrapper{display:grid;grid-template-columns:repeat(4,1fr);grid-gap:20px}.icon{flex-direction:column;box-sizing:border-box;display:flex;place-content:center;align-items:center;color:#34384c;font-weight:500}.icon span{margin-top:10px}`,
-	});
-
-	await page.screenshot({ path: 'icons.png', fullPage: true });
-
-	await browser.close();
-}
 
 function logForIcon(iconName, level, state, message = '') {
 	const [fnc, symbol] = {
