@@ -62,7 +62,7 @@ let hasError = false;
 	});
 
 	const library = await Promise.all(
-		iconsLibrary.map(async iconPath => {
+		iconsLibrary.map(async (iconPath) => {
 			const raw = await readFile(iconPath, 'utf8');
 			const optimizedSvg = (await svgo.optimize(raw)).data;
 
@@ -78,7 +78,7 @@ let hasError = false;
 					const $el = $(el);
 
 					// Validate color attributes
-					['stroke', 'fill'].forEach(attr => {
+					['stroke', 'fill'].forEach((attr) => {
 						const color = $el.attr(attr);
 						const validColors = [
 							'currentColor',
@@ -131,7 +131,7 @@ let hasError = false;
 			.concat(
 				library
 					.map(
-						iconConfig =>
+						(iconConfig) =>
 							`export { default  as ${iconConfig.iconName} } from './${iconConfig.importFrom}';`,
 					)
 					.join('\n'),

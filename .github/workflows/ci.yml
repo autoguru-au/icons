@@ -2,14 +2,14 @@ name: CI
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
     name: Build and Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -20,7 +20,7 @@ jobs:
           echo "::set-output name=node_version::$(cat .nvmrc)"
 
       - name: Setup Node ${{ steps.setups.outputs.node_version }}
-        uses: actions/setup-node@master
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ steps.setups.outputs.node_version }}
 
@@ -35,7 +35,7 @@ jobs:
       - run: yarn build
 
       - run: yarn semantic-release
-        if: github.event_name == 'push' && github.repository == 'autoguru-au/icons' && github.ref == 'refs/heads/master'
+        if: github.event_name == 'push' && github.repository == 'autoguru-au/icons' && github.ref == 'refs/heads/main'
         env:
           CI: true
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
