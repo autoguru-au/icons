@@ -1,7 +1,7 @@
 const { join, basename, relative } = require('path');
 const dedent = require('dedent');
 const globby = require('globby');
-const SVGO = require('svgo');
+const svgo = require('svgo');
 const { dim, yellow, red, green } = require('kleur');
 const { default: svgr } = require('@svgr/core');
 const { pascalCase } = require('change-case');
@@ -12,27 +12,6 @@ const ROOT = join(__dirname, '..');
 
 const destinationDir = join(ROOT, 'lib');
 
-const svgo = new SVGO({
-	multipass: true,
-	plugins: [
-		{ minifyStyles: true },
-		{ sortAttrs: true },
-		{ mergePaths: true },
-		{ convertColors: true },
-		{ removeViewBox: false },
-		{
-			inlineStyles: {
-				onlyMatchedOnce: false,
-			},
-		},
-		{ convertStyleToAttrs: true },
-		{
-			removeAttrs: {
-				attrs: ['baseProfile'],
-			},
-		},
-	],
-});
 
 const svgrConfig = {
 	svgProps: { fill: 'currentColor', focusable: 'false' },
@@ -64,7 +43,11 @@ let hasError = false;
 	const library = await Promise.all(
 		iconsLibrary.map(async (iconPath) => {
 			const raw = await readFile(iconPath, 'utf8');
-			const optimizedSvg = (await svgo.optimize(raw)).data;
+			const optimizedSvg = (await svgo.optimize(raw, {
+				path: iconPath,
+				multipass: true,
+				cleanupIds: false,
+			})).data;
 
 			const iconName = `${pascalCase(basename(iconPath, '.svg'))}Icon`;
 			const outputFileName = join(destinationDir, `${iconName}.tsx`);
@@ -101,9 +84,11 @@ let hasError = false;
 			}
 
 			// Process files
-			const componentContents = await svgr(optimizedSvg, svgrConfig, {
+			const componentContents = (await svgr(optimizedSvg, svgrConfig, {
 				componentName: iconName,
-			});
+			}))
+				.replace(/id="([\dA-Za-z])"/g, (_, id) => `id="${id}-${iconName}"`)
+				.replace(/url\(#([\dA-Za-z]+)\)/g, (_, id) => `url(#${id}-${iconName})`);
 
 			// Create files
 			await writeFile(outputFileName, componentContents, 'utf8'); // Creates per-component file

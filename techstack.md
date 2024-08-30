@@ -36,13 +36,15 @@ Full tech stack [here](/techstack.md)
 <div align="center">
 
 # Tech Stack File
-![](https://img.stackshare.io/repo.svg "repo") [autoguru-au/icons](https://github.com/autoguru-au/icons)![](https://img.stackshare.io/public_badge.svg "public")
-<br/><br/>
-|32<br/>Tools used|01/05/24 <br/>Report generated|
-|------|------|
+
+![](https://img.stackshare.io/repo.svg 'repo')
+[autoguru-au/icons](https://github.com/autoguru-au/icons)![](https://img.stackshare.io/public_badge.svg 'public')
+<br/><br/> |32<br/>Tools used|01/05/24 <br/>Report generated| |------|------|
+
 </div>
 
 ## <img src='https://img.stackshare.io/languages.svg'/> Languages (2)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'>
@@ -64,6 +66,7 @@ Full tech stack [here](/techstack.md)
 </table>
 
 ## <img src='https://img.stackshare.io/frameworks.svg'/> Frameworks (1)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/1020/OYIaJ1KK.png' alt='React'>
@@ -77,6 +80,7 @@ Full tech stack [here](/techstack.md)
 </table>
 
 ## <img src='https://img.stackshare.io/devops.svg'/> DevOps (7)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/2739/-1wfGjNw.png' alt='Babel'>
@@ -138,6 +142,7 @@ Full tech stack [here](/techstack.md)
 </table>
 
 ## Other (2)
+
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/10577/11071.jpeg' alt='lint-staged'>
@@ -158,33 +163,32 @@ Full tech stack [here](/techstack.md)
 </tr>
 </table>
 
-
 ## <img src='https://img.stackshare.io/group.svg' /> Open source packages (20)</h2>
 
 ## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (20)
 
-|NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
-|:------|:------|:------|:------|:------|:------|
-|[@babel/core](https://www.npmjs.com/@babel/core)|v7.12.16|02/17/21|Marais Rossouw |MIT|N/A|
-|[@babel/preset-react](https://www.npmjs.com/@babel/preset-react)|v7.12.13|02/17/21|Marais Rossouw |MIT|N/A|
-|[@babel/preset-typescript](https://www.npmjs.com/@babel/preset-typescript)|v7.12.16|02/17/21|Marais Rossouw |MIT|N/A|
-|[@commitlint/cli](https://www.npmjs.com/@commitlint/cli)|v11.0.0|02/17/21|Marais Rossouw |MIT|N/A|
-|[@semantic-release/commit-analyzer](https://www.npmjs.com/@semantic-release/commit-analyzer)|v8.0.1|05/19/23|Amir Zahedi |MIT|N/A|
-|[@semantic-release/github](https://www.npmjs.com/@semantic-release/github)|v7.2.0|05/19/23|Amir Zahedi |MIT|N/A|
-|[@semantic-release/npm](https://www.npmjs.com/@semantic-release/npm)|v7.0.10|05/19/23|Amir Zahedi |MIT|N/A|
-|[@semantic-release/release-notes-generator](https://www.npmjs.com/@semantic-release/release-notes-generator)|v9.0.1|05/19/23|Amir Zahedi |MIT|N/A|
-|[change-case](https://www.npmjs.com/change-case)|v4.1.2|02/17/21|Marais Rossouw |MIT|N/A|
-|[cheerio](https://www.npmjs.com/cheerio)|v1.0.0|02/17/21|Marais Rossouw |MIT|N/A|
-|[concurrently](https://www.npmjs.com/concurrently)|v5.3.0|02/17/21|Marais Rossouw |MIT|N/A|
-|[dedent](https://www.npmjs.com/dedent)|v0.7.0|08/26/19|Marais Rossouw |MIT|N/A|
-|[fs-extra](https://www.npmjs.com/fs-extra)|v9.1.0|02/17/21|Marais Rossouw |MIT|N/A|
-|[globby](https://www.npmjs.com/globby)|v11.0.2|02/17/21|Marais Rossouw |MIT|N/A|
-|[lint-staged](https://www.npmjs.com/lint-staged)|v10.5.4|02/17/21|Marais Rossouw |MIT|N/A|
-|[react-dom](https://www.npmjs.com/react-dom)|v17.0.1|02/17/21|Marais Rossouw |MIT|N/A|
-|[rimraf](https://www.npmjs.com/rimraf)|v2.7.1|02/17/21|Marais Rossouw |ISC|N/A|
-|[semantic-release](https://www.npmjs.com/semantic-release)|v17.4.2|05/19/23|Amir Zahedi |MIT|[CVE-2022-31051](https://github.com/advisories/GHSA-x2pg-mjhr-2m5x) (Moderate)|
-|[svgo](https://www.npmjs.com/svgo)|v1.3.2|12/04/19|Marais Rossouw |MIT|N/A|
-|[tslib](https://www.npmjs.com/tslib)|v1.10.0|02/17/21|Marais Rossouw |0BSD|N/A|
+| NAME                                                                                                         | VERSION  | LAST UPDATED | LAST UPDATED BY | LICENSE | VULNERABILITIES                                                                |
+| :----------------------------------------------------------------------------------------------------------- | :------- | :----------- | :-------------- | :------ | :----------------------------------------------------------------------------- |
+| [@babel/core](https://www.npmjs.com/@babel/core)                                                             | v7.12.16 | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [@babel/preset-react](https://www.npmjs.com/@babel/preset-react)                                             | v7.12.13 | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [@babel/preset-typescript](https://www.npmjs.com/@babel/preset-typescript)                                   | v7.12.16 | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [@commitlint/cli](https://www.npmjs.com/@commitlint/cli)                                                     | v11.0.0  | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [@semantic-release/commit-analyzer](https://www.npmjs.com/@semantic-release/commit-analyzer)                 | v8.0.1   | 05/19/23     | Amir Zahedi     | MIT     | N/A                                                                            |
+| [@semantic-release/github](https://www.npmjs.com/@semantic-release/github)                                   | v7.2.0   | 05/19/23     | Amir Zahedi     | MIT     | N/A                                                                            |
+| [@semantic-release/npm](https://www.npmjs.com/@semantic-release/npm)                                         | v7.0.10  | 05/19/23     | Amir Zahedi     | MIT     | N/A                                                                            |
+| [@semantic-release/release-notes-generator](https://www.npmjs.com/@semantic-release/release-notes-generator) | v9.0.1   | 05/19/23     | Amir Zahedi     | MIT     | N/A                                                                            |
+| [change-case](https://www.npmjs.com/change-case)                                                             | v4.1.2   | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [cheerio](https://www.npmjs.com/cheerio)                                                                     | v1.0.0   | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [concurrently](https://www.npmjs.com/concurrently)                                                           | v5.3.0   | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [dedent](https://www.npmjs.com/dedent)                                                                       | v0.7.0   | 08/26/19     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [fs-extra](https://www.npmjs.com/fs-extra)                                                                   | v9.1.0   | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [globby](https://www.npmjs.com/globby)                                                                       | v11.0.2  | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [lint-staged](https://www.npmjs.com/lint-staged)                                                             | v10.5.4  | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [react-dom](https://www.npmjs.com/react-dom)                                                                 | v17.0.1  | 02/17/21     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [rimraf](https://www.npmjs.com/rimraf)                                                                       | v2.7.1   | 02/17/21     | Marais Rossouw  | ISC     | N/A                                                                            |
+| [semantic-release](https://www.npmjs.com/semantic-release)                                                   | v17.4.2  | 05/19/23     | Amir Zahedi     | MIT     | [CVE-2022-31051](https://github.com/advisories/GHSA-x2pg-mjhr-2m5x) (Moderate) |
+| [svgo](https://www.npmjs.com/svgo)                                                                           | v1.3.2   | 12/04/19     | Marais Rossouw  | MIT     | N/A                                                                            |
+| [tslib](https://www.npmjs.com/tslib)                                                                         | v1.10.0  | 02/17/21     | Marais Rossouw  | 0BSD    | N/A                                                                            |
 
 <br/>
 <div align='center'>
