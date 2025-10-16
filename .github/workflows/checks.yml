@@ -22,7 +22,7 @@ jobs:
           echo "::set-output name=node_version::$(cat .nvmrc)"
 
       - name: Setup Node ${{ steps.setups.outputs.node_version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.setups.outputs.node_version }}
 
