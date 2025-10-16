@@ -1,13 +1,14 @@
-name: build-and-release
+name: checks
 
 on:
-  push:
-    branches:
-      - master
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
 
 jobs:
-  build:
-    name: Build and Release
+  checks:
+    if: (github.event.pull_request.draft == false) || github.event_name == 'workflow_dispatch'
+    name: validate and build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -21,17 +22,10 @@ jobs:
           echo "::set-output name=node_version::$(cat .nvmrc)"
 
       - name: Setup Node ${{ steps.setups.outputs.node_version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.setups.outputs.node_version }}
 
       - run: yarn
 
       - run: yarn build
-
-      - run: yarn semantic-release
-        if: github.event_name == 'push' && github.repository == 'autoguru-au/icons' && github.ref == 'refs/heads/master'
-        env:
-          CI: true
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
