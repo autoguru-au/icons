@@ -33,6 +33,7 @@
     ]
   },
   "dependencies": {
+    "@autoguru/icons": "^1.8.16",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
@@ -61,7 +62,7 @@
     "kleur": "^4.1.4",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
-    "react": "^17.0.1",
+    "react": "^19.2.3",
     "react-dom": "^17.0.1",
     "rimraf": "^3.0.2",
     "semantic-release": "^17.4.2",

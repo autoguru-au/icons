@@ -50,6 +50,13 @@
     eslint-plugin-react-hooks "^4.2.0"
     eslint-plugin-unicorn "^23.0.0"
 
+"@autoguru/icons@^1.8.16":
+  version "1.8.16"
+  resolved "https://registry.yarnpkg.com/@autoguru/icons/-/icons-1.8.16.tgz#877394c399eebd6b3abab030e939a6ffdbf02464"
+  integrity sha512-M6XjxL4NkcnjLGfR/aqCwixTT6GALchTjEMLjnFEOolFUESrwXmrxNTGOlm1EJ/orFzjx7H56bme4ABu0nyRwA==
+  dependencies:
+    tslib "^2.1.0"
+
 "@autoguru/tsconfig@^1.0.78":
   version "1.0.78"
   resolved "https://registry.yarnpkg.com/@autoguru/tsconfig/-/tsconfig-1.0.78.tgz#37bc653d2ee89826738faf1a7f870db5c0c3c3ad"
@@ -6594,13 +6601,10 @@ react-is@^16.8.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
-react@^17.0.1:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
-  integrity sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
+react@^19.2.3:
+  version "19.2.3"
+  resolved "https://registry.yarnpkg.com/react/-/react-19.2.3.tgz#d83e5e8e7a258cf6b4fe28640515f99b87cd19b8"
+  integrity sha512-Ku/hhYbVjOQnXDZFv2+RibmLFGwFdeeKHFcOTlrt7xplBnya5OGn/hIRDsqDiSUcfORsDC7MPxwork8jBwsIWA==
 
 read-cmd-shim@^1.0.1:
   version "1.0.4"
