@@ -23,7 +23,7 @@ jobs:
           cache: 'yarn'
 
       - name: Yarn install
-        run: yarn --immutable
+        run: yarn install --frozen-lockfile
 
       - name: Create Release Pull Request
         uses: changesets/action@v1

@@ -52,7 +52,7 @@ jobs:
           fi
 
       - name: Yarn install
-        run: yarn --immutable
+        run: yarn install --frozen-lockfile
 
       - name: Build
         run: yarn build
