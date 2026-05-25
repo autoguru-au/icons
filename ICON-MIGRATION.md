@@ -274,6 +274,7 @@ These icons were replaced with equivalents from [Phosphor Icons](https://phospho
 | wireless-outline.svg | WirelessOutlineIcon | wifi-high.svg | WifiHighIcon |
 | world.svg | WorldIcon | globe.svg | GlobeIcon |
 | wrench.svg | WrenchIcon | wrench.svg | WrenchIcon |
+| clutch.svg | ClutchIcon | gear-six.svg | GearSixIcon |
 
 ## 4. Kept Original (no suitable replacement)
 
@@ -281,7 +282,7 @@ These icons had no Phosphor equivalent and were kept as-is or replaced with the 
 
 | Filename | Export Name | Notes |
 |---|---|---|
-| clutch.svg | ClutchIcon | Replaced with Phosphor `gear-six` (6-tooth gear, closest to car pedals) |
+| ~~clutch.svg~~ | ~~ClutchIcon~~ | Renamed to `gear-six.svg` / `GearSixIcon` — moved to Phosphor section |
 | otto.svg | OttoIcon | AutoGuru brand logo — kept original, no Phosphor equivalent |
 | uber-box-white.svg | UberBoxWhiteIcon | Brand icon — kept original |
 
