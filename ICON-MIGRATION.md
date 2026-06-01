@@ -16,9 +16,9 @@
 
 These icons were replaced using the new SVGs from the design team. The filename (and therefore the export name) stays the same.
 
-| Old | New | Filename | Export Name | Source |
+| Old | New | Filename | Export Name | Original Design File |
 |:---:|:---:|---|---|---|
-| <img src="https://raw.githubusercontent.com/autoguru-au/icons/master/icons/air-conditioner.svg" width="32" height="32" /> | <img src="https://raw.githubusercontent.com/autoguru-au/icons/feature/AG-19073-icon-migration/icons/air-conditioner.svg" width="32" height="32" /> | `air-conditioner.svg` | `AirConditionerIcon` | AG-ACFan.svg, AG-ACSnow.svg |
+| <img src="https://raw.githubusercontent.com/autoguru-au/icons/master/icons/air-conditioner.svg" width="32" height="32" /> | <img src="https://raw.githubusercontent.com/autoguru-au/icons/feature/AG-19073-icon-migration/icons/air-conditioner.svg" width="32" height="32" /> | `air-conditioner.svg` | `AirConditionerIcon` | AG-ACFan.svg (replaces both AG-ACFan.svg and AG-ACSnow.svg) |
 | <img src="https://raw.githubusercontent.com/autoguru-au/icons/master/icons/afterpay.svg" width="32" height="32" /> | <img src="https://raw.githubusercontent.com/autoguru-au/icons/feature/AG-19073-icon-migration/icons/afterpay.svg" width="32" height="32" /> | `afterpay.svg` | `AfterpayIcon` | Brand-Afterpay.svg |
 | <img src="https://raw.githubusercontent.com/autoguru-au/icons/master/icons/alert-circle.svg" width="32" height="32" /> | <img src="https://raw.githubusercontent.com/autoguru-au/icons/feature/AG-19073-icon-migration/icons/alert-circle.svg" width="32" height="32" /> | `alert-circle.svg` | `AlertCircleIcon` | AG-WarningCircleFilled.svg |
 | <img src="https://raw.githubusercontent.com/autoguru-au/icons/master/icons/bnpl-new.svg" width="32" height="32" /> | <img src="https://raw.githubusercontent.com/autoguru-au/icons/feature/AG-19073-icon-migration/icons/bnpl-new.svg" width="32" height="32" /> | `bnpl-new.svg` | `BnplNewIcon` | AG-BuyNowPayLater.svg |
@@ -72,7 +72,7 @@ These icons were replaced using the new SVGs from the design team. The filename 
 
 These are brand new icons added to the library.
 
-| Icon | Filename | Export Name | Source |
+| Icon | Filename | Export Name | Original Design File |
 |:---:|---|---|---|
 | <img src="https://raw.githubusercontent.com/autoguru-au/icons/feature/AG-19073-icon-migration/icons/afterpay-filled.svg" width="32" height="32" /> | `afterpay-filled.svg` | `AfterpayFilledIcon` | Brand-AfterpayFilled.svg |
 | <img src="https://raw.githubusercontent.com/autoguru-au/icons/feature/AG-19073-icon-migration/icons/fg-plate.svg" width="32" height="32" /> | `fg-plate.svg` | `FgPlateIcon` | AG-FGPlate.svg |
