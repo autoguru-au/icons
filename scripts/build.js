@@ -20,6 +20,7 @@ const svgo = new SVGO({
 		{ mergePaths: true },
 		{ convertColors: true },
 		{ removeViewBox: false },
+		{ convertPathData: { noSpaceAfterFlags: false } },
 		{
 			inlineStyles: {
 				onlyMatchedOnce: false,
