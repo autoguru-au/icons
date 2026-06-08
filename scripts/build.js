@@ -20,6 +20,7 @@ const svgo = new SVGO({
 		{ mergePaths: true },
 		{ convertColors: true },
 		{ removeViewBox: false },
+		{ convertPathData: { noSpaceAfterFlags: false } },
 		{
 			inlineStyles: {
 				onlyMatchedOnce: false,
@@ -85,6 +86,10 @@ let hasError = false;
 							'black',
 							'#000',
 							'#000000',
+							'none',
+							'white',
+							'#fff',
+							'#ffffff',
 						];
 						if (color && !validColors.includes(color)) {
 							throw new Error(
