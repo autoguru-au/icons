@@ -1,5 +1,12 @@
 # @autoguru/icons
 
+## 2.0.1
+
+### Patch Changes
+
+-   fad1028: Use Phosphor fill-weight star and star-half icons for correct
+    rendering
+
 ## 2.0.0
 
 ### Major Changes
