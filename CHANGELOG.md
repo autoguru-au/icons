@@ -1,5 +1,14 @@
 # @autoguru/icons
 
+## 2.0.0
+
+### Major Changes
+
+-   02c8473: Icon library refresh — replace 53 existing icons with updated
+    designs, add 11 new icons (TikTok, X/Twitter, YouTube, Instagram filled,
+    Afterpay filled, fg-plate, heart-filled, p-plate), and replace 167 legacy
+    icons with Phosphor Icons
+
 ## 1.8.22
 
 ### Patch Changes
