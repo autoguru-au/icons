@@ -17,6 +17,7 @@ coverage/
 .rts*/
 .eslintcache
 /lib/*.tsx
+/lib/*.ts
 /index.ts
 
 # OS
