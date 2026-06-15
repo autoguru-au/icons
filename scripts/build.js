@@ -60,28 +60,6 @@ const svgrConfig = {
 	plugins: ['@svgr/plugin-jsx', '@svgr/plugin-prettier'],
 };
 
-// Maps Phosphor's `figma_category` values onto the AutoGuru design-system labels.
-const FIGMA_CATEGORY_LABELS = {
-	arrows: 'Arrows',
-	brands: 'Brands',
-	commerce: 'Commerce',
-	communication: 'Communication',
-	design: 'Design',
-	'technology & development': 'Development',
-	education: 'Education',
-	games: 'Games',
-	'health & wellness': 'Health & Wellness',
-	'maps & travel': 'Maps & Travel',
-	'math & finance': 'Math & Finance',
-	media: 'Media',
-	'office & editing': 'Office & Editing',
-	people: 'People',
-	'security & warnings': 'Security & Warnings',
-	'system & devices': 'System & Devices',
-	time: 'Time',
-	'weather & nature': 'Weather & Nature',
-};
-
 // Display order for categories in CATEGORIES.md and the exported metadata.
 // AutoGuru-specific groups lead, the Phosphor categories follow alphabetically.
 const CATEGORY_ORDER = [
@@ -114,25 +92,13 @@ const RAW_BASE =
 	'https://raw.githubusercontent.com/autoguru-au/icons/main/icons';
 const PREVIEW_COLUMNS = 6;
 
-function loadCategoryOverrides() {
+function loadCategoryMap() {
 	try {
 		// eslint-disable-next-line global-require
-		const overrides = { ...require(join(ROOT, 'categories.json')) };
-		delete overrides._comment;
-		return overrides;
-	} catch  {
-		return {};
-	}
-}
-
-function loadPhosphorCategories() {
-	try {
-		// eslint-disable-next-line global-require
-		const { icons } = require('@phosphor-icons/core');
-		return Object.fromEntries(
-			icons.map((icon) => [icon.name, icon.figma_category]),
-		);
-	} catch  {
+		const map = { ...require(join(ROOT, 'categories.json')) };
+		delete map._comment;
+		return map;
+	} catch {
 		return {};
 	}
 }
@@ -211,24 +177,22 @@ let hasError = false;
 		},
 	);
 
-	// Resolve a category for every icon: override file wins, then Phosphor's
-	// figma_category, then "Uncategorized".
-	const overrides = loadCategoryOverrides();
-	const phosphorCategories = loadPhosphorCategories();
-	const resolveCategory = (baseName) => {
-		if (overrides[baseName]) return overrides[baseName];
-		const figmaCategory = phosphorCategories[baseName];
-		if (figmaCategory && FIGMA_CATEGORY_LABELS[figmaCategory]) {
-			return FIGMA_CATEGORY_LABELS[figmaCategory];
-		}
-		return 'Uncategorized';
-	};
+	// Resolve a category for every icon from categories.json; anything missing
+	// from that map falls back to "Uncategorized".
+	const categoryMap = loadCategoryMap();
+	const missing = [];
 
 	const grouped = new Map();
 	for (const icon of library) {
-		const category = resolveCategory(icon.baseName);
+		const category = categoryMap[icon.baseName] || 'Uncategorized';
+		if (!categoryMap[icon.baseName]) missing.push(icon.baseName);
 		if (!grouped.has(category)) grouped.set(category, []);
 		grouped.get(category).push(icon);
+	}
+	if (missing.length > 0) {
+		console.log(
+			`${yellow('⚠️')} ${dim('No category in categories.json for:')} ${missing.join(', ')}`,
+		);
 	}
 	const presentCategories = CATEGORY_ORDER.filter(
 		(category) => grouped.has(category) && grouped.get(category).length > 0,

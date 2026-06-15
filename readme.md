@@ -80,23 +80,22 @@ iconCategories['Arrows']; // ['ArrowBendUpLeftIcon', 'ArrowClockwiseIcon', …]
 
 ## Contributing
 
-Icons come from two sources:
+### Adding an icon
 
-- **Phosphor** (regular weight) — pulled automatically from
-  [`@phosphor-icons/core`](https://github.com/phosphor-icons/core):
+1. Drop the optimised SVG into `icons/` with a kebab-case filename
+   (e.g. `car-key.svg`). The filename becomes the export name —
+   `car-key.svg` → `CarKeyIcon`.
+2. Keep the source clean: a single `viewBox`, `currentColor` / black fills,
+   `none` strokes, and no inline `width`/`height`. SVGs are run through `svgo`
+   during the build, but we want the source tidy too.
+3. Add the icon's category to [`categories.json`](./categories.json)
+   (`"car-key": "AutoGuru"`). Anything missing from that map is reported during
+   the build and falls into `Uncategorized`.
+4. Run `yarn build`.
 
-  ```sh
-  node scripts/import-phosphor.js
-  ```
-
-  This is **additive** — it only adds icons that don't already exist in
-  `icons/`, so hand-tuned AutoGuru icons are never overwritten.
-
-- **AutoGuru-custom** icons — exported from the AutoGuru Design System (Figma)
-  as SVGs, optimised, and dropped into `icons/` with a kebab-case filename.
-  Keep source SVGs clean (`viewBox="0 0 256 256"`, `currentColor` / black fills,
-  no inline dimensions) — they're run through `svgo` during the build, but we
-  want the source tidy too.
+The base icon set was sourced from [Phosphor](https://phosphoricons.com/)
+(regular weight) plus bespoke AutoGuru designs; those SVGs now live directly in
+`icons/`, so there's no external icon dependency.
 
 ### Building
 
@@ -107,8 +106,7 @@ yarn build      # generate, then compile CJS + ESM + type definitions
 
 `scripts/build.js` is the single source of truth for the generated `index.ts`,
 `lib/categories.ts`, and `CATEGORIES.md` — don't edit those by hand. Category
-assignments live in [`categories.json`](./categories.json) (overrides) and fall
-back to Phosphor's own category metadata.
+assignments live in [`categories.json`](./categories.json).
 
 ## License
 
