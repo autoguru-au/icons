@@ -12,7 +12,7 @@ System. Every icon is an individual component, so you only ship what you import.
 - **1,500+ icons** across **20 categories** — see [CATEGORIES.md](./CATEGORIES.md)
 - **Tree-shakeable** — `sideEffects: false`, one component per icon
 - **Themeable** — icons inherit colour via `currentColor` and scale to any size
-- **Typed** — ships TypeScript definitions and category metadata
+- **Typed** — ships TypeScript definitions for every icon
 
 ## Install
 
@@ -61,17 +61,8 @@ source filename:
 
 Icons are grouped into 20 categories (AutoGuru-custom, Filled, Brands, plus the
 Phosphor categories such as Arrows, Commerce, System & Devices…). Browse the
-full, illustrated index in **[CATEGORIES.md](./CATEGORIES.md)**.
-
-The grouping is also exported as code, so you can build pickers and filters:
-
-```ts
-import { iconCategories, categories } from '@autoguru/icons';
-import type { Category } from '@autoguru/icons';
-
-categories; // ['AutoGuru', 'Filled', 'Arrows', …]
-iconCategories['Arrows']; // ['ArrowBendUpLeftIcon', 'ArrowClockwiseIcon', …]
-```
+full, illustrated reference in **[CATEGORIES.md](./CATEGORIES.md)** — every icon
+with a preview and its export name, grouped by category.
 
 ## Finding an icon
 
@@ -89,8 +80,12 @@ iconCategories['Arrows']; // ['ArrowBendUpLeftIcon', 'ArrowClockwiseIcon', …]
    `none` strokes, and no inline `width`/`height`. SVGs are run through `svgo`
    during the build, but we want the source tidy too.
 3. Add the icon's category to [`categories.json`](./categories.json)
-   (`"car-key": "AutoGuru"`). Anything missing from that map is reported during
-   the build and falls into `Uncategorized`.
+   (`"car-key": "AutoGuru"`), then refresh the reference doc:
+
+   ```sh
+   node scripts/categories.js   # regenerates CATEGORIES.md
+   ```
+
 4. Run `yarn build`.
 
 The base icon set was sourced from [Phosphor](https://phosphoricons.com/)
@@ -100,13 +95,14 @@ The base icon set was sourced from [Phosphor](https://phosphoricons.com/)
 ### Building
 
 ```sh
-yarn generate   # SVGs -> React components, index.ts, lib/categories.ts, CATEGORIES.md
+yarn generate   # SVGs -> React components + index.ts
 yarn build      # generate, then compile CJS + ESM + type definitions
 ```
 
-`scripts/build.js` is the single source of truth for the generated `index.ts`,
-`lib/categories.ts`, and `CATEGORIES.md` — don't edit those by hand. Category
-assignments live in [`categories.json`](./categories.json).
+`scripts/build.js` turns the SVGs into components and the generated `index.ts`.
+`CATEGORIES.md` is a separate, standalone reference doc produced by
+`scripts/categories.js` from [`categories.json`](./categories.json) — it is not
+part of the build and the package exports no category metadata.
 
 ## License
 
