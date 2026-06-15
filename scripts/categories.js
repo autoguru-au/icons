@@ -15,9 +15,9 @@ const { pascalCase } = require('change-case');
 const ROOT = join(__dirname, '..');
 const ICONS_DIR = join(ROOT, 'icons');
 
-// Raw URL base for icon previews. Resolves once on the default branch.
-const RAW_BASE =
-	'https://raw.githubusercontent.com/autoguru-au/icons/main/icons';
+// Relative path to the icons, so GitHub resolves previews against whatever
+// branch CATEGORIES.md is viewed on (works pre- and post-merge).
+const ICON_PATH = 'icons';
 const PREVIEW_COLUMNS = 6;
 
 // AutoGuru-specific groups lead; the remaining categories follow alphabetically.
@@ -87,7 +87,7 @@ const sections = present
 		const list = grouped.get(category);
 		const cells = list.map(
 			(icon) =>
-				`<img src="${RAW_BASE}/${icon.base}.svg" width="32" height="32" alt="${icon.name}" /><br />\`${icon.name}\``,
+				`<img src="${ICON_PATH}/${icon.base}.svg" width="32" height="32" alt="${icon.name}" /><br />\`${icon.name}\``,
 		);
 		const rows = [];
 		for (let i = 0; i < cells.length; i += PREVIEW_COLUMNS) {
