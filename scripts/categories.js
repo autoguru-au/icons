@@ -15,9 +15,13 @@ const { pascalCase } = require('change-case');
 const ROOT = join(__dirname, '..');
 const ICONS_DIR = join(ROOT, 'icons');
 
-// Relative path to the icons, so GitHub resolves previews against whatever
-// branch CATEGORIES.md is viewed on (works pre- and post-merge).
-const ICON_PATH = 'icons';
+// Base URL for icon previews. GitHub only renders SVGs inline from absolute
+// raw.githubusercontent.com URLs, and resolves them against a concrete ref.
+// Pass ICONS_REF (a branch, tag, or commit SHA that contains the icons) — a
+// commit SHA is safest as it stays resolvable after the branch is merged.
+// Defaults to `main` for the published doc.
+const ICONS_REF = process.env.ICONS_REF || 'main';
+const ICON_PATH = `https://raw.githubusercontent.com/autoguru-au/icons/${ICONS_REF}/icons`;
 const PREVIEW_COLUMNS = 6;
 
 // AutoGuru-specific groups lead; the remaining categories follow alphabetically.
