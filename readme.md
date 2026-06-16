@@ -123,7 +123,3 @@ not part of the build and the package exports no category metadata.
 MIT &copy; [AutoGuru](https://www.autoguru.com.au/)
 
 <a href="http://www.autoguru.com.au/"><img src="https://cdn.autoguru.com.au/images/logos/autoguru.svg" alt="AutoGuru" width="150" /></a>
-
-Icons from [Phosphor Icons](https://phosphoricons.com/) (MIT). With special
-thanks to [Templarian/MaterialDesign](https://github.com/Templarian/MaterialDesign)
-for the original inspiration and base.
