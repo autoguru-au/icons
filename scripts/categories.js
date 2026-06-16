@@ -7,7 +7,7 @@
  * Data source: categories.json (icon filename -> category). Update that file
  * when adding an icon, then run:  node scripts/categories.js
  */
-const { readdirSync, readFileSync, writeFileSync } = require('fs');
+const { readdirSync, readFileSync, writeFileSync, mkdirSync, rmSync } = require('fs');
 const { join, basename } = require('path');
 
 const { pascalCase } = require('change-case');
@@ -15,16 +15,15 @@ const { pascalCase } = require('change-case');
 const ROOT = join(__dirname, '..');
 const ICONS_DIR = join(ROOT, 'icons');
 
-// Base path for icon previews. By default we use a repo-relative path
-// (`icons/<name>.svg`): GitHub resolves it against whichever ref you're viewing
-// the file on, so previews render on the feature branch now AND on `main` after
-// merge — no stale commit SHA to orphan. Pass ICONS_REF (a branch, tag, or
-// commit SHA that contains the icons) to emit absolute raw.githubusercontent.com
-// URLs instead — useful for rendering the doc outside GitHub (e.g. npm).
+// The reference is split into one page per category under categories/, linked
+// from an image-free index (CATEGORIES.md). This keeps each page's preview count
+// low: a single 1576-image page trips GitHub's image rate-limiting, so a random
+// subset renders broken on every load. Category pages reference icons with a
+// repo-relative path (../icons/<name>.svg) so previews resolve against whichever
+// ref the file is viewed on — no stale commit SHA to orphan after merge. Set
+// ICONS_REF (branch, tag, or commit SHA) to emit absolute raw.githubusercontent
+// URLs instead, for rendering the doc outside GitHub (e.g. npm).
 const ICONS_REF = process.env.ICONS_REF;
-const ICON_PATH = ICONS_REF
-	? `https://raw.githubusercontent.com/autoguru-au/icons/${ICONS_REF}/icons`
-	: 'icons';
 const PREVIEW_COLUMNS = 6;
 
 // AutoGuru-specific groups lead; the remaining categories follow alphabetically.
@@ -82,46 +81,94 @@ const slugify = (v) =>
 	v.toLowerCase().replace(/&/g, '').replace(/[^\da-z]+/g, '-').replace(/^-+|-+$/g, '');
 
 const total = icons.length;
-const toc = present
-	.map((c) => `- [${c}](#${slugify(c)}) (${grouped.get(c).length})`)
-	.join('\n');
+
+// Category pages live in categories/<slug>.md and resolve previews relative to
+// the repo root (../icons), unless ICONS_REF requests absolute URLs.
+const CATEGORIES_DIR = join(ROOT, 'categories');
+rmSync(CATEGORIES_DIR, { recursive: true, force: true });
+mkdirSync(CATEGORIES_DIR, { recursive: true });
+
+const categoryIconBase = ICONS_REF
+	? `https://raw.githubusercontent.com/autoguru-au/icons/${ICONS_REF}/icons`
+	: '../icons';
 
 const header = new Array(PREVIEW_COLUMNS).fill('').join(' | ');
 const divider = new Array(PREVIEW_COLUMNS).fill('---').join(' | ');
 
-const sections = present
-	.map((category) => {
-		const list = grouped.get(category);
-		const cells = list.map(
-			(icon) =>
-				`<img src="${ICON_PATH}/${icon.base}.svg" width="32" height="32" alt="${icon.name}" /><br />\`${icon.name}\``,
-		);
-		const rows = [];
-		for (let i = 0; i < cells.length; i += PREVIEW_COLUMNS) {
-			const row = cells.slice(i, i + PREVIEW_COLUMNS);
-			while (row.length < PREVIEW_COLUMNS) row.push('');
-			rows.push(`| ${row.join(' | ')} |`);
-		}
-		return [
-			`## ${category}`,
-			'',
-			`${list.length} icon${list.length === 1 ? '' : 's'}`,
-			'',
-			`| ${header} |`,
-			`| ${divider} |`,
-			rows.join('\n'),
-		].join('\n');
-	})
-	.join('\n\n');
+const buildGrid = (list) => {
+	const cells = list.map(
+		(icon) =>
+			`<img src="${categoryIconBase}/${icon.base}.svg" width="32" height="32" alt="${icon.name}" /><br />\`${icon.name}\``,
+	);
+	const rows = [];
+	for (let i = 0; i < cells.length; i += PREVIEW_COLUMNS) {
+		const row = cells.slice(i, i + PREVIEW_COLUMNS);
+		while (row.length < PREVIEW_COLUMNS) row.push('');
+		rows.push(`| ${row.join(' | ')} |`);
+	}
+	return [`| ${header} |`, `| ${divider} |`, rows.join('\n')].join('\n');
+};
 
-const intro = [
-	'# Icon categories',
+// One page per category — each holds at most a few hundred previews, well within
+// what GitHub renders reliably.
+present.forEach((category) => {
+	const list = grouped.get(category);
+	const page = [
+		`# ${category}`,
+		'',
+		`${list.length} icon${list.length === 1 ? '' : 's'} · part of the [icon reference](../CATEGORIES.md).`,
+		'',
+		'Each icon is an individual React component named after its label below, imported from `@autoguru/icons`.',
+		'',
+		buildGrid(list),
+		'',
+	].join('\n');
+	writeFileSync(join(CATEGORIES_DIR, `${slugify(category)}.md`), page);
+});
+
+// Index page — navigation only, no per-icon images, so it always renders.
+const indexRows = present
+	.map(
+		(c) =>
+			`| **${c}** | ${grouped.get(c).length} | [Browse&nbsp;→](categories/${slugify(c)}.md) |`,
+	)
+	.join('\n');
+
+const index = [
+	'# AutoGuru Icons — category reference',
 	'',
-	`Reference of all ${total} icons grouped across ${present.length} categories. Regenerate with \`node scripts/categories.js\` after editing \`categories.json\`.`,
+	`> A visual reference for all ${total} icons in \`@autoguru/icons\`, grouped into ${present.length} categories.`,
 	'',
-	'Each icon is exported as a React component named after the preview label (e.g. `ArrowLeftIcon`). Import it from `@autoguru/icons`.',
+	'Every icon ships as an individual, tree-shakeable React component named after',
+	'its label (e.g. `ArrowLeftIcon`). Choose a category below to browse its icons',
+	'with live previews and exact export names.',
+	'',
+	'## Categories',
+	'',
+	'| Category | Icons | |',
+	'| --- | --: | --- |',
+	indexRows,
+	`| **Total** | **${total}** | |`,
+	'',
+	'## Usage',
+	'',
+	'```jsx',
+	"import { ArrowLeftIcon } from '@autoguru/icons';",
+	"import { Icon } from '@autoguru/overdrive';",
+	'',
+	'<Icon icon={ArrowLeftIcon} size={16} />;',
+	'```',
+	'',
+	'Icons inherit colour via `currentColor` and scale to any size, so they adapt to',
+	'their surrounding text and theme.',
+	'',
+	'---',
+	'',
+	'<sub>Generated by <code>node scripts/categories.js</code> from <code>categories.json</code> — do not edit by hand.</sub>',
 	'',
 ].join('\n');
 
-writeFileSync(join(ROOT, 'CATEGORIES.md'), `${intro}\n${toc}\n\n${sections}\n`);
-console.log(`Wrote CATEGORIES.md — ${total} icons, ${present.length} categories.`);
+writeFileSync(join(ROOT, 'CATEGORIES.md'), index);
+console.log(
+	`Wrote CATEGORIES.md index + ${present.length} category pages under categories/ — ${total} icons.`,
+);
