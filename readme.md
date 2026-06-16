@@ -9,7 +9,7 @@ A tree-shakeable React icon library combining bespoke AutoGuru icons with the
 [Phosphor](https://phosphoricons.com/) icon set, mirroring the AutoGuru Design
 System. Every icon is an individual component, so you only ship what you import.
 
-- **1,500+ icons** across **20 categories** — see [CATEGORIES.md](./CATEGORIES.md)
+- **1,500+ icons** across **20 categories** — see the [category reference](./categories)
 - **Tree-shakeable** — `sideEffects: false`, one component per icon
 - **Themeable** — icons inherit colour via `currentColor` and scale to any size
 - **Typed** — ships TypeScript definitions for every icon
@@ -61,12 +61,12 @@ source filename:
 
 Icons are grouped into 20 categories (AutoGuru-custom, Filled, Brands, plus the
 Phosphor categories such as Arrows, Commerce, System & Devices…). Browse the
-full, illustrated reference in **[CATEGORIES.md](./CATEGORIES.md)** — every icon
+full, illustrated reference in **[`categories/`](./categories)** — every icon
 with a preview and its export name, grouped by category.
 
 ## Finding an icon
 
-- Browse [CATEGORIES.md](./CATEGORIES.md) or search [phosphoricons.com](https://phosphoricons.com/).
+- Browse the [category reference](./categories) or search [phosphoricons.com](https://phosphoricons.com/).
 - The Phosphor icon `arrow-square-out` is exported here as `ArrowSquareOutIcon`.
 
 ## Contributing
@@ -79,11 +79,11 @@ with a preview and its export name, grouped by category.
 2. Keep the source clean: a single `viewBox`, `currentColor` / black fills,
    `none` strokes, and no inline `width`/`height`. SVGs are run through `svgo`
    during the build, but we want the source tidy too.
-3. Add the icon's category to [`categories.json`](./categories.json)
-   (`"car-key": "AutoGuru"`), then refresh the reference doc:
+3. Add the icon's category to [`categories/categories.json`](./categories/categories.json)
+   (`"car-key": "AutoGuru"`), then refresh the reference:
 
    ```sh
-   node scripts/categories.js   # regenerates CATEGORIES.md
+   node categories/generate.js   # regenerates the category reference
    ```
 
 4. Run `yarn build`.
@@ -100,9 +100,9 @@ yarn build      # generate, then compile CJS + ESM + type definitions
 ```
 
 `scripts/build.js` turns the SVGs into components and the generated `index.ts`.
-`CATEGORIES.md` is a separate, standalone reference doc produced by
-`scripts/categories.js` from [`categories.json`](./categories.json) — it is not
-part of the build and the package exports no category metadata.
+The [`categories/`](./categories) reference is separate, standalone documentation
+produced by `categories/generate.js` from `categories/categories.json` — it is
+not part of the build and the package exports no category metadata.
 
 ## License
 

@@ -1,6 +1,6 @@
 # Time
 
-28 icons · part of the [icon reference](../CATEGORIES.md).
+28 icons · part of the [icon reference](./README.md).
 
 Each icon is an individual React component named after its label below, imported from `@autoguru/icons`.
 
