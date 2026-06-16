@@ -15,13 +15,16 @@ const { pascalCase } = require('change-case');
 const ROOT = join(__dirname, '..');
 const ICONS_DIR = join(ROOT, 'icons');
 
-// Base URL for icon previews. GitHub only renders SVGs inline from absolute
-// raw.githubusercontent.com URLs, and resolves them against a concrete ref.
-// Pass ICONS_REF (a branch, tag, or commit SHA that contains the icons) — a
-// commit SHA is safest as it stays resolvable after the branch is merged.
-// Defaults to `main` for the published doc.
-const ICONS_REF = process.env.ICONS_REF || 'main';
-const ICON_PATH = `https://raw.githubusercontent.com/autoguru-au/icons/${ICONS_REF}/icons`;
+// Base path for icon previews. By default we use a repo-relative path
+// (`icons/<name>.svg`): GitHub resolves it against whichever ref you're viewing
+// the file on, so previews render on the feature branch now AND on `main` after
+// merge — no stale commit SHA to orphan. Pass ICONS_REF (a branch, tag, or
+// commit SHA that contains the icons) to emit absolute raw.githubusercontent.com
+// URLs instead — useful for rendering the doc outside GitHub (e.g. npm).
+const ICONS_REF = process.env.ICONS_REF;
+const ICON_PATH = ICONS_REF
+	? `https://raw.githubusercontent.com/autoguru-au/icons/${ICONS_REF}/icons`
+	: 'icons';
 const PREVIEW_COLUMNS = 6;
 
 // AutoGuru-specific groups lead; the remaining categories follow alphabetically.
