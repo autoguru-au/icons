@@ -59,10 +59,13 @@ source filename:
 
 ## Categories
 
-Icons are grouped into 20 categories (AutoGuru-custom, Filled, Brands, plus the
-Phosphor categories such as Arrows, Commerce, System & Devices…). Browse the
-full, illustrated reference in **[`categories/`](./categories)** — every icon
-with a preview and its export name, grouped by category.
+All **1,576 icons** are grouped into **20 categories**. Open the
+[**category reference**](./categories) for the full illustrated index (every icon
+with a preview and its export name), or jump straight to a category:
+
+<!-- categories:start -->
+[AutoGuru](./categories/autoguru.md)&nbsp;(44) · [Filled](./categories/filled.md)&nbsp;(9) · [Arrows](./categories/arrows.md)&nbsp;(121) · [Brands](./categories/brands.md)&nbsp;(89) · [Commerce](./categories/commerce.md)&nbsp;(176) · [Communication](./categories/communication.md)&nbsp;(73) · [Design](./categories/design.md)&nbsp;(133) · [Development](./categories/development.md)&nbsp;(29) · [Education](./categories/education.md)&nbsp;(19) · [Games](./categories/games.md)&nbsp;(73) · [Health & Wellness](./categories/health-wellness.md)&nbsp;(27) · [Maps & Travel](./categories/maps-travel.md)&nbsp;(99) · [Math & Finance](./categories/math-finance.md)&nbsp;(83) · [Media](./categories/media.md)&nbsp;(111) · [Office & Editing](./categories/office-editing.md)&nbsp;(131) · [People](./categories/people.md)&nbsp;(69) · [Security & Warnings](./categories/security-warnings.md)&nbsp;(44) · [System & Devices](./categories/system-devices.md)&nbsp;(156) · [Time](./categories/time.md)&nbsp;(28) · [Weather & Nature](./categories/weather-nature.md)&nbsp;(62)
+<!-- categories:end -->
 
 ## Finding an icon
 

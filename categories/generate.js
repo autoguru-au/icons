@@ -171,6 +171,20 @@ const index = [
 ].join('\n');
 
 writeFileSync(join(OUT_DIR, 'README.md'), index);
+
+// Keep the category list on the repo landing page (root readme) in sync, between
+// markers, so every category is one click from the front page.
+const readmePath = join(ROOT, 'readme.md');
+const nav = present
+	.map((c) => `[${c}](./categories/${slugify(c)}.md)&nbsp;(${grouped.get(c).length})`)
+	.join(' · ');
+const readme = readFileSync(readmePath, 'utf8');
+const updated = readme.replace(
+	/<!-- categories:start -->[\s\S]*?<!-- categories:end -->/,
+	`<!-- categories:start -->\n${nav}\n<!-- categories:end -->`,
+);
+if (updated !== readme) writeFileSync(readmePath, updated);
+
 console.log(
-	`Wrote categories/README.md index + ${present.length} category pages — ${total} icons.`,
+	`Wrote categories/README.md index + ${present.length} category pages, synced root readme — ${total} icons.`,
 );
