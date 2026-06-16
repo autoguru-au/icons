@@ -175,9 +175,21 @@ writeFileSync(join(OUT_DIR, 'README.md'), index);
 // Keep the category list on the repo landing page (root readme) in sync, between
 // markers, so every category is one click from the front page.
 const readmePath = join(ROOT, 'readme.md');
-const nav = present
-	.map((c) => `[${c}](./categories/${slugify(c)}.md)&nbsp;(${grouped.get(c).length})`)
-	.join(' · ');
+// Two category/count pairs per row keeps the landing-page table compact.
+const navLink = (c) => `[${c}](./categories/${slugify(c)}.md)`;
+const navRows = [];
+for (let i = 0; i < present.length; i += 2) {
+	const a = present[i];
+	const b = present[i + 1];
+	const left = `${navLink(a)} | ${grouped.get(a).length}`;
+	const right = b ? `${navLink(b)} | ${grouped.get(b).length}` : ' | ';
+	navRows.push(`| ${left} | ${right} |`);
+}
+const nav = [
+	'| Category | Icons | Category | Icons |',
+	'| --- | --: | --- | --: |',
+	...navRows,
+].join('\n');
 const readme = readFileSync(readmePath, 'utf8');
 const updated = readme.replace(
 	/<!-- categories:start -->[\s\S]*?<!-- categories:end -->/,

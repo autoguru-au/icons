@@ -64,7 +64,18 @@ All **1,576 icons** are grouped into **20 categories**. Open the
 with a preview and its export name), or jump straight to a category:
 
 <!-- categories:start -->
-[AutoGuru](./categories/autoguru.md)&nbsp;(44) · [Filled](./categories/filled.md)&nbsp;(9) · [Arrows](./categories/arrows.md)&nbsp;(121) · [Brands](./categories/brands.md)&nbsp;(89) · [Commerce](./categories/commerce.md)&nbsp;(176) · [Communication](./categories/communication.md)&nbsp;(73) · [Design](./categories/design.md)&nbsp;(133) · [Development](./categories/development.md)&nbsp;(29) · [Education](./categories/education.md)&nbsp;(19) · [Games](./categories/games.md)&nbsp;(73) · [Health & Wellness](./categories/health-wellness.md)&nbsp;(27) · [Maps & Travel](./categories/maps-travel.md)&nbsp;(99) · [Math & Finance](./categories/math-finance.md)&nbsp;(83) · [Media](./categories/media.md)&nbsp;(111) · [Office & Editing](./categories/office-editing.md)&nbsp;(131) · [People](./categories/people.md)&nbsp;(69) · [Security & Warnings](./categories/security-warnings.md)&nbsp;(44) · [System & Devices](./categories/system-devices.md)&nbsp;(156) · [Time](./categories/time.md)&nbsp;(28) · [Weather & Nature](./categories/weather-nature.md)&nbsp;(62)
+| Category | Icons | Category | Icons |
+| --- | --: | --- | --: |
+| [AutoGuru](./categories/autoguru.md) | 44 | [Filled](./categories/filled.md) | 9 |
+| [Arrows](./categories/arrows.md) | 121 | [Brands](./categories/brands.md) | 89 |
+| [Commerce](./categories/commerce.md) | 176 | [Communication](./categories/communication.md) | 73 |
+| [Design](./categories/design.md) | 133 | [Development](./categories/development.md) | 29 |
+| [Education](./categories/education.md) | 19 | [Games](./categories/games.md) | 73 |
+| [Health & Wellness](./categories/health-wellness.md) | 27 | [Maps & Travel](./categories/maps-travel.md) | 99 |
+| [Math & Finance](./categories/math-finance.md) | 83 | [Media](./categories/media.md) | 111 |
+| [Office & Editing](./categories/office-editing.md) | 131 | [People](./categories/people.md) | 69 |
+| [Security & Warnings](./categories/security-warnings.md) | 44 | [System & Devices](./categories/system-devices.md) | 156 |
+| [Time](./categories/time.md) | 28 | [Weather & Nature](./categories/weather-nature.md) | 62 |
 <!-- categories:end -->
 
 ## Finding an icon
