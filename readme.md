@@ -59,14 +59,14 @@ source filename:
 
 ## Categories
 
-All **1,576 icons** are grouped into **20 categories**. Open the
+All **1,577 icons** are grouped into **20 categories**. Open the
 [**category reference**](./categories) for the full illustrated index (every icon
 with a preview and its export name), or jump straight to a category:
 
 <!-- categories:start -->
 | Category | Icons | Category | Icons |
 | --- | --: | --- | --: |
-| [AutoGuru](./categories/autoguru.md) | 44 | [Filled](./categories/filled.md) | 9 |
+| [AutoGuru](./categories/autoguru.md) | 45 | [Filled](./categories/filled.md) | 9 |
 | [Arrows](./categories/arrows.md) | 121 | [Brands](./categories/brands.md) | 89 |
 | [Commerce](./categories/commerce.md) | 176 | [Communication](./categories/communication.md) | 73 |
 | [Design](./categories/design.md) | 133 | [Development](./categories/development.md) | 29 |
