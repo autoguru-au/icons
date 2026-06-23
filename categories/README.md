@@ -1,6 +1,6 @@
 # AutoGuru Icons — category reference
 
-> A visual reference for all 1576 icons in `@autoguru/icons`, grouped into 20 categories.
+> A visual reference for all 1577 icons in `@autoguru/icons`, grouped into 20 categories.
 
 Every icon ships as an individual, tree-shakeable React component named after
 its label (e.g. `ArrowLeftIcon`). Choose a category below to browse its icons
@@ -10,7 +10,7 @@ with live previews and exact export names.
 
 | Category | Icons | |
 | --- | --: | --- |
-| **AutoGuru** | 44 | [Browse&nbsp;→](./autoguru.md) |
+| **AutoGuru** | 45 | [Browse&nbsp;→](./autoguru.md) |
 | **Filled** | 9 | [Browse&nbsp;→](./filled.md) |
 | **Arrows** | 121 | [Browse&nbsp;→](./arrows.md) |
 | **Brands** | 89 | [Browse&nbsp;→](./brands.md) |
@@ -30,7 +30,7 @@ with live previews and exact export names.
 | **System & Devices** | 156 | [Browse&nbsp;→](./system-devices.md) |
 | **Time** | 28 | [Browse&nbsp;→](./time.md) |
 | **Weather & Nature** | 62 | [Browse&nbsp;→](./weather-nature.md) |
-| **Total** | **1576** | |
+| **Total** | **1577** | |
 
 ## Usage
 
