@@ -191,9 +191,13 @@ const nav = [
 	...navRows,
 ].join('\n');
 const readme = readFileSync(readmePath, 'utf8');
-const updated = readme.replace(
+let updated = readme.replace(
 	/<!-- categories:start -->[\s\S]*?<!-- categories:end -->/,
 	`<!-- categories:start -->\n${nav}\n<!-- categories:end -->`,
+);
+updated = updated.replace(
+	/All \*\*[\d,]+ icons?\*\* are grouped into \*\*\d+ categories?\*\*/,
+	`All **${total.toLocaleString('en-US')} icons** are grouped into **${present.length} categories**`,
 );
 if (updated !== readme) writeFileSync(readmePath, updated);
 

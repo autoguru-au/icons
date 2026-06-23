@@ -59,7 +59,7 @@ source filename:
 
 ## Categories
 
-All **1,576 icons** are grouped into **20 categories**. Open the
+All **1,577 icons** are grouped into **20 categories**. Open the
 [**category reference**](./categories) for the full illustrated index (every icon
 with a preview and its export name), or jump straight to a category:
 
